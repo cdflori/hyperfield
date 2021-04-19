@@ -1,29 +1,37 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import useAuth from '../hooks/auth';
+import { Navbar, Nav } from 'react-bootstrap';
 
-const Navbar = () => {
+
+const HomeNavbar = () => {
     const { isLoggedIn, logout, getProfile } = useAuth();
     return (
         <div>
-            <h3>Navbar</h3>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to='/content'>Content</Link></li>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar.Brand href="/">Support App</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ml-auto">   
+            
+                {/* <Nav.Link to="/">Home</Nav.Link> */}
                 {isLoggedIn() ?
                     <>
-                        <li>Hello, {getProfile().email}</li>
-                        <li><Link onClick={() => logout()} to='/'>Logout</Link></li>
+                        <p>Hello, {getProfile().email}</p>
+                        <Nav.Link to='/content'>Content</Nav.Link>
+                        <Nav.Link onClick={() => logout()} to='/'>Logout</Nav.Link>
                     </>
                     :
                     <>
-                        <li><Link to="/signup">Signup</Link></li>
-                        <li><Link to="/login">Login</Link></li>
+                        {/* <Nav.Link href="/signup">Signup</Nav.Link>
+                        <Nav.Link href="/login">Login</Nav.Link> */}
                     </>
                 }
                 
-            </ul>
+            </Nav> 
+            </Navbar.Collapse>
+            </Navbar>
         </div>
     );
 };
 
-export default Navbar;
+export default HomeNavbar;

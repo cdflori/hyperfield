@@ -1,7 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
-import Navbar from './elements/Navbar';
+import HomeNavbar from './elements/Navbar';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './components/Home';
@@ -35,7 +36,7 @@ function App() {
   
   return (
       <Router>
-          <Navbar />
+          <HomeNavbar />
           <Switch>
               <Route exact path='/'>
                   <Home />
