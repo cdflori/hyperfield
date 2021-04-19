@@ -2,21 +2,22 @@ import { useState } from 'react';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/auth';
 
-const Login = () => {
-    const { login, isLoggedIn } = useAuth();
+const Signup = () => {
+    const { signup, isLoggedIn } = useAuth();
     // History and location are hooks we can use to manipulate our page's history!
     const history = useHistory();
     const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // For our redirector
-    const [redirectToSignup, toggleRedirect] = useState(false);
+    const [redirectToLogin, toggleRedirect] = useState(false);
     // This is the key part to our redirector. We can pull the prior location out here, if it exists
     const { from } = location.state || { from: { pathname: '/' } };
 
     const handleSubmit = event => {
         event.preventDefault();
-        login(email, password).then(res => {
+        signup(email, password).then(res => {
+            // Go back to whence you came!
             history.replace(from);
         });
     };
@@ -25,10 +26,10 @@ const Login = () => {
         return <Redirect to={location.state || '/'} />;
     }
 
-    if (redirectToSignup) {
+    if (redirectToLogin) {
+        // If someone goes to login, this transfers the redirect
         return <Redirect to={{
-            // If someone goes to signup, this transfers the redirect
-            pathname: '/signup',
+            pathname: '/login',
             state: { from: from }
         }}
         />;
@@ -37,7 +38,7 @@ const Login = () => {
     return (
         <div>
             <h2>
-                Login Page
+                Signup Page
             </h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='email'>Email:</label>
@@ -60,14 +61,14 @@ const Login = () => {
                     onChange={event => setPassword(event.target.value)}
                 />
                 <br />
-                <button type='submit'>Login</button>
+                <button type='submit'>Signup</button>
             </form>
             <p>
-                Need an account? <button onClick={() => toggleRedirect(true)}>Signup Here</button>
+                Already have an account? <button onClick={() => toggleRedirect(true)}>Login Here</button>
             </p>
 
-        </div >
+        </div>
     );
 };
 
-export default Login;
+export default Signup;
