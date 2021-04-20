@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/auth';
+import {Form} from 'react-bootstrap';
 
 const Login = () => {
     const { login, isLoggedIn } = useAuth();
@@ -9,6 +10,7 @@ const Login = () => {
     const location = useLocation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     // For our redirector
     const [redirectToSignup, toggleRedirect] = useState(false);
     // This is the key part to our redirector. We can pull the prior location out here, if it exists
@@ -39,7 +41,7 @@ const Login = () => {
             <h2>
                 Login Page
             </h2>
-            <form onSubmit={handleSubmit}>
+            <Form>
                 <label htmlFor='email'>Email:</label>
                 <input
                     name='email'
@@ -61,7 +63,7 @@ const Login = () => {
                 />
                 <br />
                 <button type='submit'>Login</button>
-            </form>
+            </Form>
             <p>
                 Need an account? <button onClick={() => toggleRedirect(true)}>Signup Here</button>
             </p>

@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './components/Home';
-import Signup from './components/Signup';
+import Signup from './components/SignUp/Signup';
 import Login from './components/Login';
 import Content from './components/Content';
 

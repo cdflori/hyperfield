@@ -1,0 +1,15 @@
+.signupBtn {
+    background: #4158A1;
+    border-radius: 0;
+    font-size: 16pt;
+    padding: 10px 30px;
+
+}
+
+.signupBtn:hover {
+    background: #314B8D;
+}
+
+.formContainer {
+    padding: 0px;
+}
