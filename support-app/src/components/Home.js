@@ -1,28 +1,25 @@
-import {Button} from 'react-bootstrap';
+import {Button, Container, Row, Col} from 'react-bootstrap';
 
 function Home() {
 
     const styles={
 
         container: {
-            position: 'relative'
-        },
+            position: 'relative',
+            paddingTop: '100px'
+            // top: '0%',
+            // left: '25%'
 
-        btnDiv: {
-            position: 'absolute',
-            top: '50%',
-            left: '35%'
         },
 
         loginBtn: {
             backgroundColor: '#4158A1',
             color: '#fffff',
             fontWeight: 'bold',
-            padding: '20px',
+            padding: '20px 43px',
             margin: '20px',
-            // position:'absolute',
-            // top: '50%',
-            // // left: '40%'
+            fontSize: '18pt'
+            
         },
 
         userBtn: {
@@ -31,18 +28,22 @@ function Home() {
             fontWeight: 'bold',
             padding: '20px',
             margin: '20px',
-            // position:'absolute',
-            // top: '50%',
-            // right: '40%'
+            fontSize: '18pt'
         }
     }
 
     return (
-        <div style={styles.contatiner}>
-            <div style={styles.btnDiv}>
-                <Button style={styles.loginBtn} href='/login'>Login</Button>
-                <Button style={styles.userBtn} href='/signup'>Create User</Button>
-            </div>
+        <div>
+            <Container style={styles.container}>
+                <Row>
+                    <Col lg={true}>
+                        <Button block style={styles.loginBtn} href='/login'>Login</Button>
+                    </Col>
+                    <Col lg={true}>
+                        <Button block  style={styles.userBtn} href='/signup'>Create User</Button>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
