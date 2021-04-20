@@ -1,0 +1,34 @@
+.login {
+    background: #4158A1;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 20px 43px;
+    margin: 20px;
+    font-size: 18pt;
+    border-radius: 0;
+}
+
+.login:hover {
+    background: #314B8D;
+}
+
+.userBtn {
+    background: #4158A1;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 20px;
+    margin: 20px;
+    font-size: 18pt;
+    border-radius: 0;
+
+    
+}
+
+.userBtn:hover {
+    background: #314B8D;
+}
+
+.container {
+    position: relative;
+    padding-top: 100px;
+}
