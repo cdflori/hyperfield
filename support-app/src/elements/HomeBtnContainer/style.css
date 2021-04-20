@@ -2,8 +2,8 @@
     background: #4158A1;
     color: #ffffff;
     font-weight: bold;
-    padding: 20px 43px;
-    margin: 20px;
+    padding: 20px 103px;
+    margin-bottom: 20px;
     font-size: 18pt;
     border-radius: 0;
 }
@@ -16,8 +16,8 @@
     background: #4158A1;
     color: #ffffff;
     font-weight: bold;
-    padding: 20px;
-    margin: 20px;
+    padding: 20px 68px;
+    margin-bottom: 20px;
     font-size: 18pt;
     border-radius: 0;
 
@@ -29,6 +29,7 @@
 }
 
 .container {
-    position: relative;
+    /* position: relative; */
     padding-top: 100px;
+    /* left: 50%; */
 }

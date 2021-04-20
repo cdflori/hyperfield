@@ -7,13 +7,13 @@ function BtnContainer() {
 
     return(
         <>
-            <Container >
+            <Container d-flex justify-content-center >
                 <Row>
-                    <Col lg={true}>
+                    <Col md={6} sm={12}>
                         <Button block className='login' href='/login'>Login</Button>
                     </Col>
-                    <Col lg={true}>
-                        <Button block  className='userBtn' href='/signup'>Create User</Button>
+                    <Col md={6} sm={12}>
+                        <Button block className='userBtn' href='/signup'>Create User</Button>
                     </Col>
                 </Row>
             </Container>

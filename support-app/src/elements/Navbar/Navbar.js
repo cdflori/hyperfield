@@ -1,14 +1,23 @@
 // import { Link } from 'react-router-dom';
-import useAuth from '../hooks/auth';
-import { Navbar, Nav } from 'react-bootstrap';
-
+import useAuth from '../../hooks/auth';
+import { Navbar, Nav, Image } from 'react-bootstrap';
+import './style.css'
 
 const HomeNavbar = () => {
     const { isLoggedIn, logout, getProfile } = useAuth();
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="/">Support App</Navbar.Brand>
+            <Navbar collapseOnSelect expand="lg" className='navBar'>
+            <Navbar.Brand href="/">
+                <Image 
+                    src='../../assets/LogoWhite.png'
+                    alt='Hyperfield Logo'
+                    maxWidth= '100%'
+                    height='auto'
+                    className="d-inline-block align-top"
+                />
+                
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">   

@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import HomeNavbar from './elements/Navbar';
+import HomeNavbar from './elements/Navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
