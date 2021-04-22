@@ -76,28 +76,21 @@ const Signup = () => {
                         <Form.Label>Type</Form.Label>
                         <Form.Control 
                             as ="select" 
-                            name='userType'>
+                            {...register('userType')}>
                             <option>Instructor</option>
                             <option>Oil Rig User</option>
-                            ref={register({
-                                required: {
-                                    value: true,
-                                    message: 'Please select user type',
-                                },
-                            })}
+                            
                         </Form.Control>
                     </Form.Group>
                 )}
                 {formStep === 1 && (
                 <Form.Group>
                     <Form.Label htmlFor='first name'>First Name</Form.Label>
-                    <Form.Control 
-                        name='firstName' 
-                        type='test' 
+                    <Form.Control
+                        {...register('firstName')}
+                        type='test'
                         id='firstName'
-                        placeholder='First Name' 
-                        ref={register()}
-                    />
+                        placeholder='First Name' />
                     <br/>    
                     <Form.Label htmlFor='last name'>Last Name</Form.Label>    
                     <Form.Control 
