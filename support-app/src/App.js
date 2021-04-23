@@ -47,9 +47,12 @@ function App() {
               <Route path='/login'>
                   <Login />
               </Route>
-              <PrivateRoute exact path='/content'>
+              <Route path='/content'>
+                <Content/>
+              </Route>
+              {/* <PrivateRoute exact path='/content'>
                     <Content />
-                </PrivateRoute>
+                </PrivateRoute> */}
           </Switch>
       </Router>
   );
