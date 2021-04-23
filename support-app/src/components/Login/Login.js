@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Redirect, useHistory, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/auth';
-import {Form} from 'react-bootstrap';
+import useAuth from '../../hooks/auth';
+import { Form, Button} from 'react-bootstrap';
+import './style.css';
 
 const Login = () => {
     const { login, isLoggedIn } = useAuth();
@@ -37,13 +38,14 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='container'>
             <h2>
                 Login Page
             </h2>
             <Form>
-                <label htmlFor='email'>Email:</label>
-                <input
+                <Form.Group>
+                <Form.Label htmlFor='email'>Email:</Form.Label>
+                <Form.Control
                     name='email'
                     placeholder='Email'
                     type='email'
@@ -52,8 +54,8 @@ const Login = () => {
                     onChange={event => setEmail(event.target.value)}
                 />
                 <br />
-                <label htmlFor='password'>Password:</label>
-                <input
+                <Form.Label htmlFor='password'>Password:</Form.Label>
+                <Form.Control
                     name='password'
                     placeholder='Password'
                     type='password'
@@ -62,10 +64,11 @@ const Login = () => {
                     onChange={event => setPassword(event.target.value)}
                 />
                 <br />
-                <button type='submit'>Login</button>
+                <Button className= 'loginBtn' type='submit'>Login</Button>
+                </Form.Group>
             </Form>
             <p>
-                Need an account? <button onClick={() => toggleRedirect(true)}>Signup Here</button>
+                Need an account? <a className='toggleBtn' onClick={() => toggleRedirect(true)}>Signup Here</a>
             </p>
 
         </div >

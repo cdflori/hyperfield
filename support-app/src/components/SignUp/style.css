@@ -29,15 +29,21 @@
 }
 
 
-.formContainer {
+/* .formContainer {
     padding: 50px 100px;
-    /* width: 500px;
-    margin: auto; */
-    /* left: 50%;
-    top: aut;
-    position: absolute;
-    transform: translate(-50%, -50%); */
-    /* background: #f4f4f4; */
-    /* box-shadow: 20px 20px 50px #f4f4f4; */
+    width: 500px;
+    margin: auto;
 
+} */
+
+.toggleBtn {
+    color: #4158A1;
+    font-weight: bold;
+}
+
+.toggleBtn:hover {
+    color: #FF8827;
+    font-weight: bold;
+    text-decoration: none;
+    cursor:pointer;
 }

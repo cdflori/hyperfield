@@ -1,0 +1,16 @@
+.createIncidentBtn {
+    background: #4158A1;
+    border-color: #4158A1;
+    border-radius: 0;
+    font-size: 16pt;
+    padding: 10px 30px;
+
+}
+
+.createIncidentBtn:hover {
+    background: #314B8D;
+}
+
+.createIncidentBtn:active {
+    background: none;
+}

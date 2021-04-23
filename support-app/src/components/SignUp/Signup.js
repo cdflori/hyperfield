@@ -62,8 +62,8 @@ const Signup = () => {
     // need to add onSubmit redirect once data is sent to the api... this should then redirect to the logged in page.
 
     return (
-        <div className='flex'>
-            <div className='formContainer'>
+        <div className='container'>
+            <div>
             <h2>Signup Page</h2>
                 <div sm={6} xs={12} className="px-16 py-10">  
                     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -188,7 +188,7 @@ const Signup = () => {
                     </Form>
                 </div>
                 <p>
-                Already have an account? <button onClick={() => toggleRedirect(true)}>Login Here</button>
+                Already have an account? <a className='toggleBtn' href= '#' onClick={() => toggleRedirect(true)}>Login Here</a>
                 </p>
             </div>
 

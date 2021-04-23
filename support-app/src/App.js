@@ -7,8 +7,9 @@ import axios from 'axios';
 import useAuth from './hooks/auth';
 import Home from './components/Home';
 import Signup from './components/SignUp/Signup';
-import Login from './components/Login';
-import Content from './components/Content';
+import Login from './components/Login/Login';
+// import Content from './components/Content';
+import Incidents from './components/Incidents/Incidents'
 
 
 
@@ -47,8 +48,8 @@ function App() {
               <Route path='/login'>
                   <Login />
               </Route>
-              <Route path='/content'>
-                <Content/>
+              <Route path='/incidents'>
+                <Incidents/>
               </Route>
               {/* <PrivateRoute exact path='/content'>
                     <Content />
