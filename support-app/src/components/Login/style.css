@@ -27,3 +27,34 @@
     text-decoration: none;
     cursor:pointer;
 }
+
+.loginForm {
+    padding: 50px
+}
+
+.loginForm .card {
+    /* min-width: 640px; */
+    text-align: center;
+    width: 540px;
+    min-height: 440px;
+    padding: 40px 30px;
+    margin: 10% auto 0 auto;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%);
+    border-radius: 10px;
+}
+
+.loginForm .card form {
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 960px) {
+    .loginForm .card {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 640px) {
+    .loginForm .card {
+        width: 100%;
+        min-width: 0;
+    }
+}

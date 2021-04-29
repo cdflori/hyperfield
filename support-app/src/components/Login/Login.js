@@ -38,39 +38,40 @@ const Login = () => {
     }
 
     return (
-        <div className='container'>
-            <h2>
-                Login Page
-            </h2>
-            <Form>
-                <Form.Group>
-                <Form.Label htmlFor='email'>Email:</Form.Label>
-                <Form.Control
-                    name='email'
-                    placeholder='Email'
-                    type='email'
-                    autoComplete='username'
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                />
-                <br />
-                <Form.Label htmlFor='password'>Password:</Form.Label>
-                <Form.Control
-                    name='password'
-                    placeholder='Password'
-                    type='password'
-                    autoComplete='password'
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
-                />
-                <br />
-                <Button className= 'loginBtn' type='submit'>Login</Button>
-                </Form.Group>
-            </Form>
-            <p>
-                Need an account? <a className='toggleBtn' onClick={() => toggleRedirect(true)}>Signup Here</a>
-            </p>
-
+        <div className='container loginForm'>
+            <div className='p-d-flex p-jc-center'>
+                <div className='card'>
+                <h2 className='p-text-center'>
+                    Login Page
+                </h2>
+                <Form className='p-fluid'>
+                    <Form.Group>
+                    <Form.Control
+                        name='email'
+                        placeholder='Email'
+                        type='email'
+                        autoComplete='username'
+                        value={email}
+                        onChange={event => setEmail(event.target.value)}
+                    />
+                    <br />
+                    <Form.Control
+                        name='password'
+                        placeholder='Password'
+                        type='password'
+                        autoComplete='password'
+                        value={password}
+                        onChange={event => setPassword(event.target.value)}
+                    />
+                    <br />
+                    <Button className= 'loginBtn' type='submit'>Login</Button>
+                    </Form.Group>
+                </Form>
+                <p>
+                    Need an account? <a className='toggleBtn' onClick={() => toggleRedirect(true)}>Signup Here</a>
+                </p>
+            </div>
+            </div>
         </div >
     );
 };
