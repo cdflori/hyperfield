@@ -3,7 +3,6 @@ import { Redirect, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Form, Button, Row } from 'react-bootstrap';
-import { ChevronDoubleLeftIcon } from '@heroicons/react/solid';
 import './style.css';
 
 const Signup = () => {
@@ -11,9 +10,11 @@ const Signup = () => {
     // History and location are hooks we can use to manipulate our page's history!
     // const history = useHistory();
     const location = useLocation();
-    const { watch, register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: 'all' });
+    const { watch, setValue, register, handleSubmit, formState: { errors, isValid } } = useForm({ mode: 'all' });
     const [formStep, setFormStep] = useState(0);
-    const MAX_STEPS = 3
+    const [userTypeValue, setUserTypeValue] = useState([])
+
+    const MAX_STEPS = 3;
     // For our redirector
     const [redirectToLogin, toggleRedirect] = useState(false);
     // This is the key part to our redirector. We can pull the prior location out here, if it exists
@@ -58,11 +59,32 @@ const Signup = () => {
         }
     }
 
-    const onSubmit = (data) => console.log(data)
+    const handleFormDropdown = selectedOption => {
+        setValue('userType', selectedOption, true);
+        setUserTypeValue(selectedOption);
+    };
+
+    const isInstructorSelected = userTypeValue.some(option => option.value === 'Instructor');
+    const isRigWorkerSelected = userTypeValue.some(option => option.value === 'Oil Rig Worker');
+
+    // const displayTypeForm = () => {
+    //     const typeSelection = document.getElementByName('userType');
+    //     const ifInstructorSelected = document.getElementsByName('instructorType');
+    //     ifInstructorSelected.style.display = typeSelection.value === 'Instructor' ? 'block' : 'none';
+    // }
+
+    const previousStep = () => {
+        setFormStep(cur => cur - 1)
+    }
+
+    const onSubmit = (data) => {window.alert(JSON.stringify(data, null, 2))
+    completeFormStep()
+    }
+
 
     // need to add onSubmit redirect once data is sent to the api... this should then redirect to the logged in page.
 
-    return (
+return (
         <div className='container signupForm'>
             <div className='p-d-flex p-jc-center'>
                 <div className='card'>
@@ -71,10 +93,12 @@ const Signup = () => {
                         <Form onSubmit={handleSubmit(onSubmit)}>
                             {formStep < MAX_STEPS && (
                                 <Row className='p-d-flex p-jc-center'>
-                                    <a href='/'>
+                                    {formStep > 0 && (
+                                    <button className='backIconBtn' onClick= {previousStep} type='button'>
                                         <i className='fas fa-chevron-left stepIcon'></i>
-                                    </a>
-                                    <p>
+                                    </button>
+                                    )}
+                                    <p className='stepText'>
                                         Step {formStep + 1} of {MAX_STEPS}
                                     </p>
                                 </Row> )}
@@ -82,16 +106,89 @@ const Signup = () => {
                                 <Form.Group>
                                     <Form.Control 
                                         as ='select' 
-                                        name='userType'
+                                        name ='userType'
+                                        onChange = {handleFormDropdown}
                                         {...register('userType', {required: {
-                                            value: true,
+                                            value: {userTypeValue},
                                             message: 'Please select user type',
                                         }})}>
                                         {errors.userType && <p>{errors.userType.message}</p>}
-                                        <option>Instructor</option>
-                                        <option>Oil Rig User</option>
+                                        <option>Select User Type</option>
+                                        <option value='Instructor'>Instructor</option>
+                                        <option value='Oil Rig User'>Oil Rig User</option>
                                         
                                     </Form.Control>
+                                    <br/>
+                                    {isInstructorSelected === 'Instructor' &&  (
+                                    <Form.Control
+                                    as ='select' 
+                                    name='instructorType'
+                                    // style= {{display: {'none' : 'true'} }}
+                                    {...register('instructorType', {required: {
+                                        value: 'Instructor',
+                                        message: 'Please select instructor type',
+                                    }})}>
+                                    {errors.userType && <p>{errors.userType.message}</p>}
+                                    <option>Driller</option>
+                                    <option>General</option>
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                </Form.Control>
+                                    )}
+                                    <br/>
+                                    {isRigWorkerSelected &&  (
+                                    <Form.Control
+                                    as ='select' 
+                                    name='company'
+                                    // style= {{display: {'none' : 'true'} }}
+                                    {...register('company', {required: {
+                                        value: true,
+                                        message: 'Select Company',
+                                    }})}>
+                                    {errors.userType && <p>{errors.userType.message}</p>}
+                                    <option>Company 1</option>
+                                    <option>Company 2</option>
+                                    <option>Company 3</option>
+                                    <option>Company 4</option>
+                                </Form.Control>
+
+                                    )}
+                                    <br/>
+                                    {isRigWorkerSelected === 'Oil Rig User' &&  (
+                                    <Form.Control
+                                    as ='select' 
+                                    name='location'
+                                    // style= {{display: {'none' : 'true'} }}
+                                    {...register('location', {required: {
+                                        value: true,
+                                        message: 'Select Location',
+                                    }})}>
+                                    {errors.userType && <p>{errors.userType.message}</p>}
+                                    <option>Location 1</option>
+                                    <option>Location 2</option>
+                                    <option>Location 3</option>
+                                    <option>Location 4</option>
+                                </Form.Control>
+
+                                    )}
+                                    <br/>
+                                    {isRigWorkerSelected === 'Oil Rig User' &&  (
+                                    <Form.Control
+                                    as ='select' 
+                                    name='rigUserType'
+                                    // style= {{display: {'none' : 'true'} }}
+                                    {...register('rigUserType', {required: {
+                                        value: true,
+                                        message: 'Select Rig User Type',
+                                    }})}>
+                                    {errors.userType && <p>{errors.userType.message}</p>}
+                                    <option>Manager</option>
+                                    <option>Operator</option>
+                                    <option>User Type 3</option>
+                                    <option>User Type 4</option>
+                                </Form.Control>
+
+                                    )}
                                 </Form.Group>
                             )}
                             {formStep === 1 && (
@@ -146,7 +243,8 @@ const Signup = () => {
 
                             </Form.Group>
                             
-                            )}   
+                            )} 
+
                             <br />
                             {formStep === 2 && (
                             <Form.Group>
@@ -174,7 +272,7 @@ const Signup = () => {
                             </Form.Group>
                             )}
                             {formStep === 3 && (
-                            <h2>You've Created An Account!</h2>
+                            <h2>Account Created!</h2>
                             )}
                             <br/>
                             {renderButton()}
@@ -185,7 +283,7 @@ const Signup = () => {
                     </div>
                     <br/>
                     <p>
-                    Already have an account? <a className='toggleBtn' href= '#' onClick={() => toggleRedirect(true)}>Login Here</a>
+                    Already have an account? <button className='toggleBtn' onClick={() => toggleRedirect(true)}>Login Here</button>
                     </p>
                 </div>
             </div>                
